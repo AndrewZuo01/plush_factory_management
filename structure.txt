@@ -1,0 +1,60 @@
+plush_factory_management/
+├── main.py                     # 程序唯一入口，启动主窗口+侧边导航+页面堆栈切换
+├── requirements.txt            # 依赖：PySide6、sqlite3、openpyxl（导出用）
+├── .gitignore
+├── README.md
+├── config/                     # 全局配置层（不动底层逻辑，改配置即可）
+│   ├── __init__.py
+│   ├── path_cfg.py             # 统一管理数据库、图片、备份、导出文件路径
+│   └── app_settings.py        # 软件名称、默认工序列表、窗口尺寸、保留小数位数
+│
+# ========== 数据层：SQLite数据库，只做增删改查，无业务计算 ==========
+├── database/
+│   ├── __init__.py
+│   ├── db_core.py              # 数据库单例连接、开启外键、通用执行SQL方法
+│   ├── init_db.py              # 程序首次运行自动建3张核心表，初始化默认工序
+│   ├── models/
+│   │   ├── quote_model.py      # 报价单主表+报价工序明细CRUD
+│   │   └── schedule_model.py   # 生产排期工序看板数据CRUD
+│   └── data/plush_db.sqlite    # 自动生成SQLite数据库文件
+│
+# ========== 业务服务层：纯逻辑计算，完全解耦UI，界面随便改不影响算法 ==========
+├── service/
+│   ├── __init__.py
+│   ├── quote_calc_service.py   # 报价核心：单工序修改、批量调价、总价求和、保存报价
+│   └── schedule_track_service.py # 排期核心：时间差计算、实际成本汇总、工期逾期判断
+│
+# ========== UI视图层：只负责页面渲染、按钮信号绑定，所有计算调用Service ==========
+├── view/
+│   ├── __init__.py
+│   ├── main_window.py          # 主窗口：左侧侧边导航栏 + 右侧QStackedWidget多页面容器
+│   ├── pages/                  # 两个核心功能页面
+│   │   ├── quote_price_page.py # 【功能1】毛绒玩具工序报价主界面
+│   │   └── schedule_dashboard.py # 【功能2】生产工期排期Dashboard看板
+│   └── widgets/                # 全局复用自定义控件（后续可扩充）
+│       ├── number_spin.py      # 封装金额输入框，限制负数、保留两位小数
+│       └── date_time_edit.py   # 封装起止时间选择控件
+│
+# ========== 工具工具箱：全局通用小函数 ==========
+├── utils/
+│   ├── __init__.py
+│   ├── logger.py               # 日志打印，记录操作与报错
+│   ├── file_op.py              # 文件创建、导出Excel、图片读取
+│   └── validator.py            # 输入合法性校验（金额非负、时间逻辑校验）
+│
+# ========== 静态资源：图片、图标、样式 ==========
+├── assets/
+│   ├── toy_img/                # 存放毛绒玩具样图（报价页中间展示）
+│   ├── icons/                  # 导航按钮图标
+│   └── qss/style.qss           # 全局界面美化样式表
+│
+# ========== 程序运行生成文件目录（自动创建，无需手动建） ==========
+├── storage/
+│   ├── exports/                # 导出的报价单Excel
+│   ├── db_backup/              # 数据库备份文件
+│   └── runtime_logs/           # 运行日志
+│
+# ========== 预留扩展文件夹（空目录占位，后期加功能直接用） ==========
+├── plugins/                    # 打印模板、数据同步插件
+├── tests/                      # 单元测试
+└── app.spec                    # 后续PyInstaller打包配置文件
