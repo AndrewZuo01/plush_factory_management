@@ -28,3 +28,80 @@
 2026-07-16 10:20:33 - plush_app - INFO - schedule_model.py:26 - 已为报价单1初始化全套工序排期
 2026-07-16 10:20:33 - plush_app - INFO - schedule_track_service.py:20 - 排期看板初始化完成 -> 报价单ID:1
 2026-07-16 10:20:36 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 10:44:40 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 10:44:40 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 10:44:40 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 10:44:40 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 10:47:59 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 12:34:18 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 12:34:18 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 12:34:19 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 12:34:19 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 12:38:14 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 12:38:14 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 12:38:14 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 12:38:14 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 12:38:18 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:33:04 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:33:04 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:33:05 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:33:05 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:33:24 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:33:24 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:33:24 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:33:24 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:33:53 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:33:53 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:33:54 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:33:54 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:35:30 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:35:30 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:35:30 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:35:30 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:37:06 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:37:06 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:37:06 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:37:06 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:37:08 - plush_app - ERROR - schedule_dashboard.py:132 - 刷新看板异常
+Traceback (most recent call last):
+  File "/Users/andrew/Desktop/plush_factory_management/view/pages/schedule_dashboard.py", line 117, in refresh_dashboard
+    card = self.create_process_card(item)
+  File "/Users/andrew/Desktop/plush_factory_management/view/pages/schedule_dashboard.py", line 146, in create_process_card
+    plan_start.set_datetime_text(data["plan_start"])
+NameError: name 'plan_start' is not defined
+2026-07-16 16:40:50 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:40:50 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:40:50 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:40:50 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:43:09 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:43:09 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:43:09 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:43:09 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:43:11 - plush_app - ERROR - schedule_dashboard.py:132 - 刷新看板异常
+Traceback (most recent call last):
+  File "/Users/andrew/Desktop/plush_factory_management/view/pages/schedule_dashboard.py", line 117, in refresh_dashboard
+    card = self.create_process_card(item)
+  File "/Users/andrew/Desktop/plush_factory_management/view/pages/schedule_dashboard.py", line 145, in create_process_card
+    plan_start = DateTimeEdit()
+  File "/Users/andrew/Desktop/plush_factory_management/view/widgets/date_time_edit.py", line 16, in __init__
+    today = QDate.currentDate()
+NameError: name 'QDate' is not defined
+2026-07-16 16:43:37 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:43:37 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:43:37 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:43:37 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:44:04 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:44:05 - plush_app - INFO - schedule_model.py:26 - 已为报价单1初始化全套工序排期
+2026-07-16 16:44:05 - plush_app - INFO - schedule_track_service.py:20 - 排期看板初始化完成 -> 报价单ID:1
+2026-07-16 16:46:19 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:46:19 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:46:20 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:46:20 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:50:50 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:50:50 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:50:50 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:50:50 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-16 16:53:15 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-16 16:53:15 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-16 16:53:16 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-16 16:53:16 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1

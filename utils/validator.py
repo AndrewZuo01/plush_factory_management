@@ -25,17 +25,34 @@ def is_valid_price(num: float | str) -> tuple[bool, float | None, str]:
 
 def is_time_range_valid(start_str: str, end_str: str, fmt: str = "%Y-%m-%d %H:%M") -> tuple[bool, str]:
     """
-    校验计划/实际起止时间：结束时间不能早于开始时间
+    校验计划/实际起止时间：
+    允许单空/全空；如果两项都填写，则结束不能早于开始、格式必须正确
     :param start_str: 开始时间字符串
     :param end_str: 结束时间字符串
     :param fmt: 时间格式
     :return: (是否合法, 错误信息)
     """
-    if not start_str.strip() or not end_str.strip():
-        return False, "开始时间与结束时间不能为空"
+    s = start_str.strip()
+    e = end_str.strip()
+
+    # 两个都空：合法
+    if not s and not e:
+        return True, ""
+    # 只填一个：不需要比对先后，只校验已填写那一项格式
+    if not s or not e:
+        try:
+            if s:
+                datetime.strptime(s, fmt)
+            if e:
+                datetime.strptime(e, fmt)
+        except ValueError:
+            return False, f"时间格式错误，请按照 {fmt} 填写"
+        return True, ""
+
+    # 两项都填写：校验格式 + 先后顺序
     try:
-        start_dt = datetime.strptime(start_str, fmt)
-        end_dt = datetime.strptime(end_str, fmt)
+        start_dt = datetime.strptime(s, fmt)
+        end_dt = datetime.strptime(e, fmt)
     except ValueError:
         return False, f"时间格式错误，请按照 {fmt} 填写"
 

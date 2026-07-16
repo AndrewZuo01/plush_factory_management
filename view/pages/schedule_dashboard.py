@@ -189,10 +189,15 @@ class ScheduleDashboardPage(QWidget):
             ae = widgets["actual_end"].get_datetime_str()
             cost = widgets["cost"].get_value()
 
-            # 校验计划时间
-            ok, msg = check_time_valid(ps, pe)
-            if ps and pe and not ok:
-                QMessageBox.warning(self, "时间错误", msg)
+            # 校验【计划开始-计划结束】
+            ok1, msg1 = check_time_valid(ps, pe)
+            if not ok1:
+                QMessageBox.warning(self, "计划时间错误", msg1)
+                return
+            # 校验【实际开始-实际结束】
+            ok2, msg2 = check_time_valid(as_, ae)
+            if not ok2:
+                QMessageBox.warning(self, "实际时间错误", msg2)
                 return
 
             update_dict = {
@@ -204,7 +209,7 @@ class ScheduleDashboardPage(QWidget):
             }
             save_schedule_field(sid, update_dict)
             QMessageBox.information(self, "提示", "已保存")
-            self.refresh_dashboard()
 
+            self.refresh_dashboard()
         btn_save.clicked.connect(save_single)
         return frame
