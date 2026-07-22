@@ -5,7 +5,8 @@ from database.models.schedule_model import (
     init_schedule_by_quote,
     get_schedule_by_quote_id,
     update_schedule_item,
-    get_schedule_total_cost
+    get_schedule_total_cost,
+    get_schedule_by_id
 )
 from database.models.quote_model import get_all_process
 from utils import is_time_range_valid, app_log
@@ -67,23 +68,24 @@ def save_schedule_field(schedule_id: int, data: dict):
     """
     # 先保存用户修改的数据
     update_schedule_item(schedule_id, data)
+    print("hello")
 
-    # 自动刷新最新状态
-    detail_list = get_schedule_by_quote_id(0)
-    target = None
-    for d in detail_list:
-        if d["id"] == schedule_id:
-            target = d
-            break
+    # ✅ 修复：使用按工序ID查询单条，而不是按quote_id批量查询
+    target = get_schedule_by_id(schedule_id)
     if not target:
         return
 
-    # 自动计算状态并回写
+    # 自动计算状态
     new_status = auto_get_process_status(
         target["plan_end"],
         target["actual_start"],
         target["actual_end"]
     )
+    
+    # 按需增加：如果前端手动传入status，则不再自动覆盖状态
+    # if "status" in data:
+    #     return
+
     if new_status != target["status"]:
         update_schedule_item(schedule_id, {"status": new_status})
 
@@ -94,7 +96,7 @@ def get_schedule_dashboard_data(quote_id: int) -> dict:
     返回：工序列表、总计划天数、总实际天数、总成本、是否整体延期
     """
     data_list = get_schedule_by_quote_id(quote_id)
-
+    
     total_plan_days = 0.0
     total_actual_days = 0.0
     all_delay = False

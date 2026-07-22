@@ -25,6 +25,10 @@ def init_schedule_by_quote(quote_id: int, process_list: list):
 
     app_log.info(f"已为报价单{quote_id}初始化全套工序排期")
 
+def get_schedule_by_id(schedule_id: int) -> dict | None:
+    sql = "SELECT * FROM production_schedule WHERE id=?"
+    row = db.query_one(sql, [schedule_id])
+    return row
 
 def get_schedule_by_quote_id(quote_id: int) -> list:
     """
@@ -46,6 +50,7 @@ def get_schedule_by_quote_id(quote_id: int) -> list:
     WHERE ps.relate_quote_id = ?
     ORDER BY pd.sort ASC
     """
+
     return db.query_all(sql, (quote_id,))
 
 
@@ -75,7 +80,6 @@ def update_schedule_item(schedule_id: int, data: dict):
     if "status" in data:
         update_fields.append("status=?")
         params.append(data["status"])
-
     if not update_fields:
         return
 
