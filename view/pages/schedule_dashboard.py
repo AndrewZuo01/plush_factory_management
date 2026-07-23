@@ -2,7 +2,7 @@
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QGridLayout,
     QGroupBox, QLabel, QPushButton, QMessageBox,
-    QScrollArea, QFrame, QSpacerItem, QSizePolicy
+    QScrollArea, QFrame, QSpacerItem, QSizePolicy, QComboBox
 )
 from PySide6.QtCore import Qt
 
@@ -30,9 +30,15 @@ class ScheduleDashboardPage(QWidget):
         main_layout.setContentsMargins(12,12,12,12)
         main_layout.setSpacing(10)
 
-        # 顶部操作栏
+        # ========== 顶部操作栏（替换为下拉选择报价）==========
         top_bar = QHBoxLayout()
-        self.label_quote_tip = QLabel("请先选择上方报价单")
+        # 标签 + 下拉框
+        top_bar.addWidget(QLabel("选择报价单："))
+        self.combo_quote_selector = QComboBox()
+        self.combo_quote_selector.setMinimumWidth(400)
+        # 切换下拉项自动刷新看板
+        self.combo_quote_selector.currentIndexChanged.connect(self.on_quote_selected)
+
         self.btn_load_quote = QPushButton("刷新报价列表")
         self.btn_init_schedule = QPushButton("初始化该报价排期")
         self.btn_refresh = QPushButton("刷新看板数据")
@@ -41,7 +47,7 @@ class ScheduleDashboardPage(QWidget):
         self.btn_init_schedule.clicked.connect(self.do_init_schedule)
         self.btn_refresh.clicked.connect(self.refresh_dashboard)
 
-        top_bar.addWidget(self.label_quote_tip)
+        top_bar.addWidget(self.combo_quote_selector)
         top_bar.addStretch()
         top_bar.addWidget(self.btn_load_quote)
         top_bar.addWidget(self.btn_init_schedule)
@@ -72,20 +78,31 @@ class ScheduleDashboardPage(QWidget):
         main_layout.addWidget(bottom_group)
 
     def load_quote_selector(self):
-        """加载所有报价单，供选择绑定排期"""
+        """加载所有报价单填充下拉选择框"""
         quote_list = get_all_quote_list()
+        # 清空下拉框旧数据
+        self.combo_quote_selector.clear()
+
         if not quote_list:
-            self.label_quote_tip.setText("暂无报价单，请先去报价页面新建报价")
+            self.combo_quote_selector.addItem("暂无报价单，请先去报价页面新建报价", -1)
             self.quote_id = None
+            self.refresh_dashboard()
             return
 
-        tip_text = "可选择报价："
-        for q in quote_list[:5]:
-            tip_text += f"【{q['id']}:{q['toy_name']}】"
-        self.label_quote_tip.setText(tip_text)
-        # 默认选中最新一条
-        self.quote_id = quote_list[0]["id"]
-        app_log.info(f"默认加载报价单ID:{self.quote_id}")
+        # 循环填充下拉选项：显示文本【ID:玩具名称】，绑定隐藏值quote_id
+        for q in quote_list:
+            display_text = f"【{q['id']}】{q['toy_name']} | 单号：{q['quote_no']}"
+            self.combo_quote_selector.addItem(display_text, q["id"])
+
+        # 默认选中第一条最新报价
+        self.combo_quote_selector.setCurrentIndex(0)
+
+    # 新增下拉切换触发函数
+    def on_quote_selected(self):
+        """下拉框切换报价时触发，更新当前选中quote_id并刷新看板"""
+        index = self.combo_quote_selector.currentIndex()
+        self.quote_id = self.combo_quote_selector.itemData(index)
+        app_log.info(f"切换选中报价单ID:{self.quote_id}")
         self.refresh_dashboard()
 
     def do_init_schedule(self):

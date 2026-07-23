@@ -1,0 +1,38 @@
+2026-07-23 12:11:18 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-23 12:11:18 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-23 12:11:18 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-23 12:11:18 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:1
+2026-07-23 12:11:41 - plush_app - INFO - quote_model.py:60 - 报价单2 工序明细批量保存成功
+2026-07-23 12:11:41 - plush_app - INFO - quote_calc_service.py:80 - 新报价单保存成功 ID:2 NO:Q84779901 总价:13.8
+2026-07-23 12:11:43 - plush_app - INFO - quote_price_page.py:190 - 用户保存报价单成功 ID=2
+2026-07-23 12:11:46 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:2
+2026-07-23 12:11:53 - plush_app - INFO - schedule_dashboard.py:88 - 默认加载报价单ID:2
+2026-07-23 12:16:56 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-23 12:16:56 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-23 12:16:56 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-23 12:16:56 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:17:00 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:1
+2026-07-23 12:17:02 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:17:03 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:1
+2026-07-23 12:19:04 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:19:09 - plush_app - INFO - schedule_model.py:26 - 已为报价单2初始化全套工序排期
+2026-07-23 12:19:09 - plush_app - INFO - schedule_track_service.py:21 - 排期看板初始化完成 -> 报价单ID:2
+2026-07-23 12:20:12 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:1
+2026-07-23 12:20:14 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:20:16 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:1
+2026-07-23 12:20:22 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:None
+2026-07-23 12:20:22 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:20:25 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:1
+2026-07-23 12:20:27 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:None
+2026-07-23 12:20:27 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:28:13 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-23 12:28:13 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-23 12:28:13 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-23 12:28:13 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:28:19 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:1
+2026-07-23 12:28:21 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:30:15 - plush_app - INFO - init_db.py:14 - 开始初始化数据库，路径：/Users/andrew/Desktop/plush_factory_management/database/data/plush_db.sqlite
+2026-07-23 12:30:15 - plush_app - INFO - init_db.py:81 - 数据表创建完成，默认工序初始化成功
+2026-07-23 12:30:16 - plush_app - INFO - db_core.py:28 - SQLite 数据库连接已创建
+2026-07-23 12:30:16 - plush_app - INFO - schedule_dashboard.py:105 - 切换选中报价单ID:2
+2026-07-23 12:30:16 - plush_app - INFO - process_stat_service.py:90 - 工序统计数据计算完成

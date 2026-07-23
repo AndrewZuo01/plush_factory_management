@@ -1,9 +1,9 @@
 # view/main_window.py
 from PySide6.QtWidgets import (
-    QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QStackedWidget
+    QMainWindow, QWidget, QHBoxLayout, QPushButton, QStackedWidget, QVBoxLayout
 )
 from config import MAIN_WINDOW_WIDTH, MAIN_WINDOW_HEIGHT, MAIN_WINDOW_MIN_WIDTH, MAIN_WINDOW_MIN_HEIGHT
-from view import QuotePricePage, ScheduleDashboardPage
+from view import QuotePricePage, ScheduleDashboardPage, ProcessStatPage
 
 
 class MainWindow(QMainWindow):
@@ -19,24 +19,29 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(central)
         main_layout = QHBoxLayout(central)
 
-        # 左侧导航栏
+        # 左侧导航栏【新增工序统计按钮】
         nav_layout = QVBoxLayout()
         btn_quote = QPushButton("报价计算")
         btn_dashboard = QPushButton("排期Dashboard")
+        btn_stat = QPushButton("工序工期统计报表")
         nav_layout.addWidget(btn_quote)
         nav_layout.addWidget(btn_dashboard)
+        nav_layout.addWidget(btn_stat)
         nav_layout.addStretch()
 
-        # 页面堆栈
+        # 页面堆栈【新增统计页面】
         self.stack = QStackedWidget()
         self.page_quote = QuotePricePage()
         self.page_dash = ScheduleDashboardPage()
-        self.stack.addWidget(self.page_quote)
-        self.stack.addWidget(self.page_dash)
+        self.page_stat = ProcessStatPage()
+        self.stack.addWidget(self.page_quote)    # index 0
+        self.stack.addWidget(self.page_dash)     # index 1
+        self.stack.addWidget(self.page_stat)     # index 2
 
-        # 绑定切换
+        # 绑定切换事件
         btn_quote.clicked.connect(lambda: self.stack.setCurrentIndex(0))
         btn_dashboard.clicked.connect(lambda: self.stack.setCurrentIndex(1))
+        btn_stat.clicked.connect(lambda: self.stack.setCurrentIndex(2))
 
         main_layout.addLayout(nav_layout, stretch=1)
         main_layout.addWidget(self.stack, stretch=9)
